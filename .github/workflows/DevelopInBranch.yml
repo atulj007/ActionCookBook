@@ -12,14 +12,15 @@ jobs:
             echo "workflow triggered in branch '${{ github.ref }}'"
             echo "Workflow triggered by '${{github.event_name}}'"
             echo "Workflow triggered by actor '${{github.actor}}'"
-      - uses: actions/checkout@v4.1.0
-      - uses: devops-actions/actionlint@v0.1.2
-      - run: echo "PR Title is '${{ github.event.pull_request.title }}'"
       - run: |
           echo "::debug::This is debug message"
           echo "::notice::This is notice message"
           echo "::warning::This is Warning message"
-          echo "::error::This is Error message"
+          echo "::error::This is Error message"      
+      - uses: actions/checkout@v4.1.0
+      - uses: devops-actions/actionlint@v0.1.2
+      - run: echo "PR Title is '${{ github.event.pull_request.title }}'"
+    
           
 
             
