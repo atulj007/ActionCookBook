@@ -11,7 +11,7 @@ jobs:
         with:
           who-to-greet: '@AtulJoshi'
       - name: Output the Answer
-        run: echo "The Answer is ${{ steps.my-action.output.answer }}"
+        run: echo "The Answer is ${{ steps.my-action.outputs.answer }}"
       - name: Test the Container
         if: ${{ steps.my-action.output.answer != 42 }}
         run: | 
