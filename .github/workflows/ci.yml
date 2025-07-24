@@ -12,3 +12,8 @@ jobs:
           who-to-greet: '@AtulJoshi'
       - name: Output the Answer
         run: echo "The Answer is ${{ steps.my-action.output.answer }}"
+      - name: Test the Container
+        if: ${{ steps.my-action.output.answer ! = 42 }}
+        run: | 
+          echo "::error file=entrypoint.sh,line=4,title=Error in container::The answer was not expected"
+          exit 1
