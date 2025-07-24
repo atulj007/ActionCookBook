@@ -20,7 +20,11 @@ jobs:
       - uses: actions/checkout@v4.1.0
       - uses: devops-actions/actionlint@v0.1.2
       - run: echo "PR Title is '${{ github.event.pull_request.title }}'"
-    
+      - run: |
+          echo "::notice
+          file=.github/workflows/DevelopInBranch.yml,line=19,col=11,endColumn=51::There is a degub message that is not always visible!"
+          echo "::warning file=.github/workflows/DevelopInBranch.yml,line=19,endline=19::A lot of messages"
+          echo "::error title=Script Injection,file=.github/workflows/DevelopInBranch.yml,line=13,col=37,endColumn=68::Potential script injecton"    
           
 
             
