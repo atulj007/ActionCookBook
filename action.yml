@@ -5,6 +5,9 @@ inputs:
     description: 'who to greet'
     required: true
     default: 'world'
+outputs:
+  answer:
+    description: 'The Answer to everything (always 42)'
 runs: 
   using: 'docker'
   image: 'Dockerfile'
