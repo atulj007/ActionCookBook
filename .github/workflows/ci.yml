@@ -10,3 +10,5 @@ jobs:
         uses: ./
         with:
           who-to-greet: '@AtulJoshi'
+      - name: Output the Answer
+        run: echo "The Answer is ${{ steps.my-action.output.answer }}"
