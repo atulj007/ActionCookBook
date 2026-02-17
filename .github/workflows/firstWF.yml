@@ -12,7 +12,8 @@ jobs:
 
      steps:
        - run: |
-           echo "Hello World! from ${{ github.actor }}."
+           echo "Hello ${{ vars.WHO_TO_GREET }} from ${{ github.actor }}."
+           echo "My Secret is ${{ secrets.YOUR_SECRET_NAME }}"
            echo "Current Branch is '${{ github.ref }}'."
        
        - name: checkout
