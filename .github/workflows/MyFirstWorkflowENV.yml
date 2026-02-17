@@ -13,7 +13,7 @@ jobs:
      steps:
        - run: |
            echo "Hello ${{ vars.WHO_TO_GREET }} from ${{ github.actor }}."
-           echo "My Secret is ${{ secrets.YOUR_SECRET_NAME }}"
+           echo "My Secret is ${{ secrets.MY_SECRET }}"
            echo "Current Branch is '${{ github.ref }}'."
        
        - name: checkout
@@ -26,7 +26,7 @@ jobs:
     steps:
       - run: |
           echo "Hello ${{vars.WHO_TO_GREET }} from ${{ github.actor }}"
-          sec=$(echo ${{ secrets.YOUR_SECRET_NAME }} | sed 's/ ./& /g')
+          sec=$(echo ${{ secrets.MY_SECRET }} | sed 's/ ./& /g')
           echo "My Secret is '$sec'"
   Load-Test:
     runs-on: ubuntu-latest
@@ -35,7 +35,7 @@ jobs:
     steps:
       - run: |
           echo "Hello ${{vars.WHO_TO_GREET }} from ${{ github.actor }}"
-          sec=$(echo ${{ secrets.YOUR_SECRET_NAME }} | sed 's/ ./& /g')
+          sec=$(echo ${{ secrets.MY_SECRET }} | sed 's/ ./& /g')
           echo "My Secret is '$sec'"
   Production:
     runs-on : ubuntu-latest
@@ -46,6 +46,6 @@ jobs:
     steps:
       - run: |
           echo "Hello ${{vars.WHO_TO_GREET }} from ${{ github.actor }}"
-          sec=$(echo ${{ secrets.YOUR_SECRET_NAME }} | sed 's/ ./& /g')
+          sec=$(echo ${{ secrets.MY_SECRET }} | sed 's/ ./& /g')
           echo "My Secret is '$sec'"
   
