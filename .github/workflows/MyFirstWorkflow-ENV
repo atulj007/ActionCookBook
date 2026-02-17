@@ -1,4 +1,4 @@
-name: MyFirstWorkflow-sample
+name: MyFirstWorkflow-ENV
 on : 
   push:
     branches:
