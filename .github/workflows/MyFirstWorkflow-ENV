@@ -1,0 +1,55 @@
+name: MyFirstWorkflow-sample
+on : 
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+   first_job:
+     name: My First Job
+     runs-on: ubuntu-latest
+
+     steps:
+       - run: |
+           echo "Hello ${{ vars.WHO_TO_GREET }} from ${{ github.actor }}."
+           echo "My Secret is ${{ secrets.YOUR_SECRET_NAME }}"
+           echo "Current Branch is '${{ github.ref }}'."
+       
+       - name: checkout
+         uses: actions/checkout@v4.1.0
+       - run : tree
+
+    Test:
+      runs-on: ubuntu-latest
+      environment: Test
+      needs: first_job
+      steps:  
+        - run |
+            echo "Hello ${{vars.WHO_TO_GREET }} from ${{ github.actor }}"
+            sec=$(echo ${{ secrets.YOUR_SECRET_NAME }} | sed 's/ ./& /g')
+            echo "My Secret is '$sec'"
+
+    Load-Test:
+      runs-on: ubuntu-latest
+      environment: Load-Test
+      needs: first_job
+      steps:  
+        - run |
+            echo "Hello ${{vars.WHO_TO_GREET }} from ${{ github.actor }}"
+            sec=$(echo ${{ secrets.YOUR_SECRET_NAME }} | sed 's/ ./& /g')
+            echo "My Secret is '$sec'"
+
+    Production:
+    runs-on : ubuntu-latest
+    environment:
+      name: Production
+      url: https://writeaboutme.net
+    needs: [Test, Load-Test]
+    steps:  
+        - run |
+            echo "Hello ${{vars.WHO_TO_GREET }} from ${{ github.actor }}"
+            sec=$(echo ${{ secrets.YOUR_SECRET_NAME }} | sed 's/ ./& /g')
+            echo "My Secret is '$sec'"
+  
+         
