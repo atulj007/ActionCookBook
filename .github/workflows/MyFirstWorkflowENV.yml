@@ -19,8 +19,7 @@ jobs:
        - name: checkout
          uses: actions/checkout@v4.1.0
        - run : tree
-
-     Test:
+  Test:
        runs-on: ubuntu-latest
        environment: Test
        needs: first_job
@@ -29,8 +28,7 @@ jobs:
             echo "Hello ${{vars.WHO_TO_GREET }} from ${{ github.actor }}"
             sec=$(echo ${{ secrets.YOUR_SECRET_NAME }} | sed 's/ ./& /g')
             echo "My Secret is '$sec'"
-
-     Load-Test:
+  Load-Test:
        runs-on: ubuntu-latest
        environment: Load-Test
        needs: first_job
@@ -39,8 +37,7 @@ jobs:
             echo "Hello ${{vars.WHO_TO_GREET }} from ${{ github.actor }}"
             sec=$(echo ${{ secrets.YOUR_SECRET_NAME }} | sed 's/ ./& /g')
             echo "My Secret is '$sec'"
-
-     Production:
+  Production:
       runs-on : ubuntu-latest
       environment:
        name: Production
